@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Dental "J&E" - Deja tu sonrisa en las mejores manos...</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+ 
+    <style>
+        /* VARIABLES DE COLORES Y DISEÑO */
+        :root {
+            --background: #FFFFFF;
+            --foreground: #1A1A1A;
+            --card: #FFFFFF;
+            --card-foreground: #1A1A1A;
+            --primary: #F15B04;
+            --primary-foreground: #FFFFFF;
+            --secondary: #FFF5EB;
+            --secondary-foreground: #BF4803;
+            --muted: #F7F5F3;
+            --muted-foreground: #666666;
+            --accent: #2F5729;
+            --accent-foreground: #FFFFFF;
+            --destructive: #EF4444;
+            --border: #EBE6E0;
+            --input: #EBE6E0;
+            --ring: #F15B04;
+            --radius: 12px;
+            --shadow: 0 4px 20px rgba(241, 91, 4, 0.08);
+        }
+ 
+        /* REGLAS GENERALES */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+ 
+        body {
+            background-color: var(--background);
+            color: var(--foreground);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+ 
+        h1, h2, h3, .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+ 
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+ 
+        ul {
+            list-style: none;
+        }
+ 
+        /* HEADER & NAVEGACIÓN */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        }
+ 
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+ 
+        .logo {
+            font-size: 35px;
+            font-weight: 900;
+            color: var(--primary);
+            letter-spacing: -0.2px;
+        }
+ 
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 70px;
+        }
+ 
+        .nav-link {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--foreground);
+            transition: color 0.3s ease;
+        }
+ 
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+        }
+ 
+        .btn-call {
+            background-color: var(--primary);
+            color: var(--primary-foreground);
+            padding: 10px 22px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.3s, background-color 0.3s;
+            box-shadow: 0 4px 12px rgba(241, 91, 4, 0.2);
+        }
+ 
+        .btn-call:hover {
+            background-color: #d64f02;
+            transform: translateY(-2px);
+        }
+ 
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+ 
+        /* HERO SECTION */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            padding-top: 80px;
+            background: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), 
+                        url('https://img.freepik.com/free-photo/cozy-living-room-with-plants-natural-light_23-2151972884.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+ 
+        .hero-content {
+            max-width: 900px;
+            padding: 40px 20px;
+            z-index: 2;
+        }
+ 
+        .hero-logo-wrapper {
+            width: 160px;
+            height: 160px;
+            background: white;
+            border-radius: 50%;
+            margin: 0 auto 25px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            border: 4px solid var(--secondary);
+            padding: 15px;
+        }
+ 
+        .hero-logo-img {
+            max-width: 100%;
+            height: auto;
+        }
+ 
+        .hero h2 {
+            font-size: 18px;
+            text-transform: uppercase;
+            color: var(--primary);
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+ 
+        .hero h1 {
+            font-size: 68px;
+            font-weight: 800;
+            color: #1A1A1A;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+ 
+        .hero p {
+            font-size: 18px;
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 35px;
+        }
+ 
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+ 
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--primary-foreground);
+            padding: 14px 32px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(241, 91, 4, 0.25);
+        }
+ 
+        .btn-primary:hover {
+            background-color: #d64f02;
+            transform: translateY(-3px);
+        }
+ 
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            padding: 12px 32px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+ 
+        .btn-secondary:hover {
+            background-color: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+        }
+ 
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            color: var(--primary);
+            animation: bounce 2s infinite;
+        }
+ 
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
+            40% { transform: translate(-50%, -10px); }
+            60% { transform: translate(-50%, -5px); }
+        }
+ 
+        /* SECCIONES COMPARTIDAS */
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 0 20px;
+        }
+ 
+        .section-header span {
+            font-size: 13px;
+            text-transform: uppercase;
+            color: var(--primary);
+            font-weight: 700;
+            letter-spacing: 3px;
+            display: block;
+            margin-bottom: 8px;
+        }
+ 
+        .section-header h2 {
+            font-size: 42px;
+            color: var(--foreground);
+            font-weight: 800;
+        }
+ 
+        .section-header p {
+            color: var(--muted-foreground);
+            max-width: 600px;
+            margin: 15px auto 0 auto;
+            font-size: 16px;
+        }
+ 
+        section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+ 
+        /* SECCIÓN DE RESERVAS */
+        .alert-important {
+            background-color: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto 40px auto;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+ 
+        .alert-important i {
+            color: var(--primary);
+            font-size: 30px;
+            margin-top: 2px;
+        }
+ 
+        .alert-important p {
+            font-size: 15px;
+        }
+ 
+        .alert-important strong {
+            color: var(--secondary-foreground);
+        }
+ 
+        .booking-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+ 
+        .booking-card {
+            background: var(--card);
+            border: 4px solid var(--border);
+            border-radius: var(--radius);
+            padding: 55px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+ 
+        .form-group {
+            margin-bottom: 25px;
+        }
+ 
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+ 
+        .form-group label i {
+            color: var(--primary);
+            margin-right: 6px;
+        }
+ 
+        .form-control {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid var(--border);
+            background-color: var(--background);
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+ 
+        .form-control:focus {
+            border-color: var(--primary);
+        }
+ 
+        /* Error state for inputs */
+        .form-control.input-error {
+            border-color: var(--destructive);
+        }
+ 
+        .field-error {
+            color: var(--destructive);
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+ 
+        .field-error.visible {
+            display: block;
+        }
+ 
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23F15B04' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 18px;
+            padding-right: 45px;
+        }
+ 
+        /* TIME SLOTS */
+        .time-slots-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 15px;
+        }
+ 
+        .time-slot {
+            padding: 8px 6px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: not-allowed;
+            color: #ccc;
+            transition: all 0.2s;
+            background: var(--background);
+        }
+ 
+        .time-slot.available {
+            cursor: pointer;
+            color: var(--foreground);
+        }
+ 
+        .time-slot.available:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--secondary);
+        }
+ 
+        .time-slot.selected {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            color: white;
+            font-weight: 700;
+        }
+ 
+        .time-slots-hint {
+            margin-top: 12px;
+            font-size: 12px;
+            color: var(--muted-foreground);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+ 
+        .time-slots-hint i {
+            color: var(--primary);
+        }
+ 
+        .btn-submit {
+            width: 100%;
+            background-color: #E49567; /* Opaco inicialmente */
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: not-allowed;
+            transition: all 0.3s;
+        }
+ 
+        .btn-submit.active {
+            background-color: var(--primary);
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(241, 91, 4, 0.3);
+        }
+ 
+        .btn-submit.active:hover {
+            background-color: #d64f02;
+            transform: translateY(-2px);
+        }
+ 
+        /* CALENDARIO ESTILO GOOGLE CALENDAR */
+        .calendar-title {
+            text-align: center;
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+        
+        .calendar-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 0 10px;
+        }
+ 
+        .calendar-nav span {
+            font-weight: 600;
+            font-size: 16px;
+            text-transform: capitalize;
+        }
+ 
+        .calendar-nav button {
+            background: transparent;
+            border: 1px solid var(--border);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted-foreground);
+            transition: all 0.2s;
+        }
+ 
+        .calendar-nav button:hover {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+ 
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+            text-align: center;
+        }
+ 
+        .weekday {
+            font-weight: 500;
+            font-size: 13px;
+            color: var(--muted-foreground);
+            padding-bottom: 10px;
+        }
+ 
+        .day {
+            padding: 10px 0;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 50%;
+            cursor: pointer;
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+ 
+        .day:hover:not(.empty):not(.disabled) {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+ 
+        .day.disabled {
+            color: #ccc;
+            cursor: not-allowed;
+        }
+ 
+        .day.selected {
+            background-color: var(--accent) !important;
+            color: white !important;
+            font-weight: 700;
+        }
+ 
+        .day.today {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+ 
+        .calendar-hint {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--primary);
+            font-weight: 500;
+        }
+ 
+        /* TRATAMIENTOS HORIZONTALES */
+        .slider-controls {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            margin-top: -30px;
+            margin-bottom: 45px;
+            padding-right: 20px;
+        }
+ 
+        .slider-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            transition: all 0.5s;
+        }
+ 
+        .slider-btn:hover {
+            background-color: var(--secondary);
+        }
+ 
+        .treatments-slider {
+            display: flex;
+            gap: 25px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 10px 20px 30px 20px;
+            margin: 0 -20px;
+            scrollbar-width: none;
+        }
+ 
+        .treatments-slider::-webkit-scrollbar {
+            display: none;
+        }
+ 
+        .treatment-card {
+            flex: 0 0 300px;
+            scroll-snap-align: start;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-top: 4px solid var(--primary);
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: all 0.5s ease;
+        }
+ 
+        .treatment-icon {
+            font-size: 32px;
+            background: var(--secondary);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+ 
+        .treatment-price {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+ 
+        .btn-toggle-desc {
+            background: transparent;
+            border: none;
+            color: var(--muted-foreground);
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+ 
+        .treatment-desc {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, margin-top 0.5s;
+            color: var(--muted-foreground);
+            font-size: 14px;
+        }
+ 
+        .treatment-card.expanded .treatment-desc {
+            margin-top: 15px;
+        }
+ 
+        /* SECCIÓN DENTISTAS */
+        .dentists-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+ 
+        .dentist-card {
+            position: relative;
+            border-radius: 29px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            height: 450px;
+        }
+ 
+        .dentist-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+ 
+        .dentist-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.85));
+            padding: 30px;
+            color: white;
+        }
+ 
+        .dentist-specialty {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+ 
+        /* UBICACIÓN */
+        .location-container {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 40px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+ 
+        .location-info {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+ 
+        .info-item {
+            display: flex;
+            gap: 15px;
+        }
+ 
+        .info-item .icon-box {
+            background-color: var(--secondary);
+            color: var(--primary);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+ 
+        .map-wrapper {
+            width: 100%;
+            height: 100%;
+            min-height: 350px;
+        }
+ 
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+ 
+        /* FOOTER */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 40px 20px 20px 20px;
+            text-align: center;
+        }
+ 
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+ 
+        .btn-whatsapp-footer {
+            background-color: white;
+            color: var(--primary);
+            padding: 10px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+ 
+        /* NOTIFICACIÓN POPUP SIMULADOR */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+ 
+        .modal.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+ 
+        .modal-content {
+            background: white;
+            border-radius: var(--radius);
+            padding: 35px;
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+ 
+        .modal-icon {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(47, 87, 41, 0.1);
+            color: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin: 0 auto 20px auto;
+        }
+ 
+        .calendar-notice-box {
+            background-color: #f0f4f9;
+            border-left: 4px solid #1a73e8;
+            padding: 12px;
+            border-radius: 0 8px 8px 0;
+            text-align: left;
+            margin-bottom: 25px;
+            font-size: 13px;
+        }
+ 
+        .btn-modal-close {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+        }
+ 
+        /* RESPONSIVO */
+        @media (max-width: 992px) {
+            .booking-container, .location-container { grid-template-columns: 1fr; }
+            .dentists-grid { grid-template-columns: 1fr; max-width: 450px; }
+            .hero h1 { font-size: 44px; }
+        }
+ 
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+            }
+            .nav-menu.open { display: flex; }
+            .menu-toggle { display: block; }
+            .time-slots-grid { grid-template-columns: repeat(3, 1fr); }
+ 
+            /* Fix mobile overflow */
+            .booking-card { padding: 25px 20px; }
+            .calendar-grid { gap: 4px; }
+            .day { font-size: 13px; padding: 7px 0; }
+            .weekday { font-size: 11px; }
+            .treatment-card { flex: 0 0 85vw; }
+            section { padding: 60px 15px; }
+            .booking-container { gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+ 
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">"J&E"</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#" class="nav-link active">Inicio</a></li>
+                <li><a href="#reservar" class="nav-link">Reservar</a></li>
+                <li><a href="#dentistas" class="nav-link">Dentistas</a></li>
+                <li><a href="#tratamientos" class="nav-link">Tratamientos</a></li>
+                <li><a href="#ubicacion" class="nav-link">Ubicación</a></li>
+            </ul>
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <a href="tel:+591 72543891" class="btn-call">
+                    <i class="fa-solid fa-phone"></i> <span>Llamar</span>
+                </a>
+                <div class="menu-toggle" id="menuToggle"><i class="fa-solid fa-bars"></i></div>
+            </div>
+        </div>
+    </header>
+ 
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <div class="hero-logo-wrapper">
+                <img src="https://i.imgur.com/E7Ac9Iw.jpeg" alt="Logo J&E Consultorio Dental" class="hero-logo-img" style="border-radius:50%;object-fit:cover;width:100%;height:100%;">
+            </div>
+            <h1>CLÍNICA DENTAL</h1>
+            <h1>"J&E"</h1>
+            <p>DEJA TU SONRISA EN LAS MEJORES MANOS</p>
+            <div class="hero-buttons">
+                <a href="#reservar" class="btn-primary"><i class="fa-regular fa-calendar-check"></i> Reservar Cita</a>
+                <a href="https://wa.me/59172543891" target="_blank" class="btn-secondary"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+            </div>
+        </div>
+        <a href="#reservar" class="scroll-down"><i class="fa-solid fa-chevron-down"></i></a>
+    </section>
+ 
+    <section id="reservar">
+        <div class="section-header">
+            <span>AGENDA TU VISITA</span>
+            <h2>Reserve su consulta</h2>
+        </div>
+ 
+        <div class="alert-important">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <p><strong>Importante:</strong> Debe reservar con <strong>30 minutos </strong> de anticipación. Las citas sin reserva previa no serán atendidas. Agradecemos su comprensión.</p>
+        </div>
+ 
+        <div class="booking-container">
+            <div class="booking-card">
+                <div>
+                    <div class="form-group">
+                        <label><i class="fa-regular fa-user-md"></i> Selecciona Dentista</label>
+                        <select class="form-control" id="selectDentista">
+                            <option value="" disabled selected>Elige un dentista</option>
+                            <option value="juan">Dr. Jaime - Estetica Dental</option>
+                            <option value="elena">Dra. Eva - Pediatría</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fa-regular fa-user"></i> Nombre</label>
+                        <input type="text" class="form-control" id="inputNombre" placeholder="Nombre" autocomplete="off">
+                        <div class="field-error" id="errorNombre">Solo se permiten letras y espacios.</div>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fa-regular fa-user"></i> Apellido</label>
+                        <input type="text" class="form-control" id="inputApellido" placeholder="Apellido" autocomplete="off">
+                        <div class="field-error" id="errorApellido">Solo se permiten letras y espacios.</div>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-phone-flip"></i> Teléfono</label>
+                        <input type="tel" class="form-control" id="inputTelefono" placeholder="Ej: 71234567 " autocomplete="off">
+                        <div class="field-error" id="errorTelefono">Solo se permiten números y el signo +.</div>
+                    </div>
+                </div>
+                <button class="btn-submit" id="btnConfirmar" disabled>Confirmar Reserva</button>
+            </div>
+ 
+            <div class="booking-card">
+                <div class="calendar-title">Selecciona una Fecha</div>
+                <div class="calendar-nav">
+                    <button id="prevMonth"><i class="fa-solid fa-chevron-left"></i></button>
+                    <span id="monthYearDisplay">mayo 2026</span>
+                    <button id="nextMonth"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+                <div class="calendar-grid" id="calendarGrid"></div>
+                <div class="calendar-hint" id="calendarHint">← Primero selecciona un dentista</div>
+ 
+                <!-- HORARIOS -->
+                <div style="margin-top: 25px;">
+                    <label style="font-weight: 600; font-size: 15px; display: flex; align-items: center; gap: 6px; margin-bottom: 10px;">
+                        <i class="fa-regular fa-clock" style="color: var(--primary);"></i> Selecciona un Horario
+                    </label>
+                    <div class="time-slots-grid" id="timeSlotsGrid">
+                        <!-- Los horarios se generan dinámicamente -->
+                    </div>
+                    <div class="time-slots-hint" id="timeSlotsHint">
+                        <i class="fa-solid fa-info-circle"></i>
+                        <span>Primero elige un día del calendario</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <section id="dentistas" style="background-color: var(--muted);">
+        <div class="section-header">
+            <span>NUESTRO EQUIPO</span>
+            <h2>Conoce a tus Dentistas</h2>
+        </div>
+        <div class="dentists-grid">
+            <div class="dentist-card">
+                <img src="https://img.freepik.com/vector-premium/icono-logotipo-vector-diente-azul-simbolo-odontologia-signo-medico-dentalhealth-limpio-blanco-saludable-cuidado-dental_81863-5176.jpg?w=360" alt="Dr. Juan" class="dentist-img">
+                <div class="dentist-info">
+                    <h3>Dr. Jaime</h3>
+                    <div class="dentist-specialty">Especialista en Estetica Dental</div>
+                    <p>Realiza carillas dentales y excelente prótesis fija. Transformando sonrisas con tecnología.</p>
+                </div>
+            </div>
+            <div class="dentist-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiPAmlnoT4SHhJPV7HWeTk8ZqDDGxjzF-I8Q&s" alt="Dra. Elena" class="dentist-img">
+                <div class="dentist-info">
+                    <h3>Dra. Eva - Pediatría</h3>
+                    <div class="dentist-specialty">Odonto Pediatra</div>
+                    <p>Atención con niños, enfocada en la prevención y tratamiento de enfermedades dentales específicas de la población pediátrica.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <section id="tratamientos">
+        <div class="section-header">
+            <span>SERVICIOS</span>
+            <h2>Nuestros Tratamientos</h2>
+            <p>Haz clic en "ver más" para ver la descripción completa del tratamiento.</p>
+        </div>
+ 
+        <div class="slider-controls">
+            <button class="slider-btn" id="slideLeft"><i class="fa-solid fa-arrow-left"></i></button>
+            <button class="slider-btn" id="slideRight"><i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+ 
+        <div class="treatments-slider" id="treatmentsSlider">
+            <div class="treatment-card">
+                <div class="treatment-icon">🦷</div>
+                <h3>Odontología Restauradora</h3>
+                <div class="treatment-price"></div>
+                <button class="btn-toggle-desc">Ver más <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="treatment-desc">Especialidad encargada de diagnosticar, tratar y prevenir las enfermedades de los dientes. Su objetivo principal es reparar piezas dentales dañadas o reemplazar las ausentes, devolviéndoles su forma, función masticatoria y estética natural.</div>
+            </div>
+            <div class="treatment-card">
+                <div class="treatment-icon">🪛</div>
+                <h3>Tratamientos Endodoncia</h3>
+                <div class="treatment-price"></div>
+                <button class="btn-toggle-desc">Ver más <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="treatment-desc">Consiste en extirpar la pulpa dental dañada o infectada (el "nervio" del diente), limpiar y desinfectar el interior de las raíces y sellarlas. Su objetivo principal es aliviar el dolor y salvar la pieza natural, evitando así la extracción.</div>
+            </div>
+            <div class="treatment-card">
+                <div class="treatment-icon">🔧</div>
+                <h3>Rehabilitación fija</h3>
+                <div class="treatment-price"></div>
+                <button class="btn-toggle-desc">Ver más <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="treatment-desc">Tratamiento odontológico que restituye piezas dentales ausentes o dañadas mediante estructuras hechas a medida que se cementan permanentemente sobre los dientes naturales o implantes.</div>
+            </div>
+            <div class="treatment-card">
+                <div class="treatment-icon">🏥</div>
+                <h3>Rehabilitación removible</h3>
+                <div class="treatment-price"></div>
+                <button class="btn-toggle-desc">Ver más <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="treatment-desc">Tratamiento odontológico que utiliza aparatos a medida para reemplazar dientes ausentes, recuperando la estética y la función masticatoria.</div>
+            </div>
+            <div class="treatment-card">
+                <div class="treatment-icon">🔩</div>
+                <h3>Cirugía Dental</h3>
+                <div class="treatment-price"></div>
+                <button class="btn-toggle-desc">Ver más <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="treatment-desc">Es un procedimiento quirúrgico odontológico que consiste en retirar una pieza dental o restos de esta de su cavidad ósea.</div>
+            </div>
+            <div class="treatment-card">
+                <div class="treatment-icon">🦷</div>
+                <h3>Estética-</h3>
+                <div class="treatment-price">$80</div>
+                <button class="btn-toggle-desc">Ver más <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="treatment-desc">Especialidad que busca armonizar y embellecer la sonrisa. Corrige problemas de color, tamaño, forma y posición dental. Los procedimientos más comunes son el blanqueamiento, las carillas, la ortodoncia invisible y el contorno dental.</div>
+            </div>
+            <div class="treatment-card">
+                <div class="treatment-icon">💎</div>
+                  <h3>Odonto Pediatría-</h3>
+                <div class="treatment-price">Desde $400</div>
+                <button class="btn-toggle-desc">Ver más <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="treatment-desc">Finas láminas estéticas de porcelana para transformar radicalmente la estética frontal de la sonrisa.</div>
+            </div>
+            <div class="treatment-card">
+                <div class="treatment-icon">📷</div>
+                <h3>Diagnostico con cámara intraoral</h3>
+                <div class="treatment-price"></div>
+                <button class="btn-toggle-desc">Ver más <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="treatment-desc">Fundas de alta resistencia para devolver la fuerza y anatomía a dientes muy desgastados.</div>
+            </div>
+        </div>
+    </section>
+ 
+    <section id="ubicacion">
+        <div class="section-header">
+            <span>ENCUÉNTRANOS</span>
+            <h2>Nuestra Ubicación</h2>
+        </div>
+        <div class="location-container">
+            <div class="location-info">
+                <div class="info-item">
+                    <div class="icon-box"><i class="fa-solid fa-location-dot"></i></div>
+                    <div class="info-text">
+                        <h4>Dirección</h4>
+                        <p>Av. Principal #123, Santa Cruz, Bolivia</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="icon-box"><i class="fa-solid fa-clock"></i></div>
+                    <div class="info-text">
+                        <h4>Horario</h4>
+                        <p>Lunes a Sábado o emergencias</p>
+                    </div>
+                </div>
+            </div>
+            <div class="map-wrapper">
+                <iframe src="https://maps.google.com/maps?q=Santa%20Cruz%20Bolivia&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+            </div>
+        </div>
+    </section>
+ 
+    <footer>
+        <div class="footer-content">
+            <div>CLÍNICA DENTAL "J&E"<p>Tu sonrisa, nuestra pasión</p></div>
+            <div><a href="https://wa.me/1234567890" target="_blank" class="btn-whatsapp-footer">WhatsApp</a></div>
+        </div>
+        <div class="copyright">© 2026 Clínica Dental J&E. Todos los derechos reservados.</div>
+    </footer>
+ 
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-icon"><i class="fa-solid fa-check"></i></div>
+            <h3>¡Reserva Confirmada!</h3>
+            <p id="modalMessage"></p>
+            <div class="calendar-notice-box">
+                <p><i class="fa-solid fa-calendar-check"></i> <strong>Sincronizado con Google Calendar</strong></p>
+                <p style="margin-top:5px; color:#5f6368;">El calendario del odontólogo ha sido actualizado. Se programó una notificación automática 30 minutos antes de la cita.</p>
+            </div>
+            <button class="btn-modal-close" id="btnCerrarModal">Excelente</button>
+        </div>
+    </div>
+ 
+    <script>
+        // ─── GOOGLE APPS SCRIPT URL ───────────────────────────────────────────────
+        // Reemplaza esta URL con la URL de implementación de tu Google Apps Script
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzrwrAg4UEVfxlt5CcQ4pFKGVjV210b8_f_zetC0AkdlAzXe0QgA-t-GsZTLIMQoqaLAA/exec';
+ 
+        // ─── MENÚ HAMBURGUESA ─────────────────────────────────────────────────────
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => navMenu.classList.toggle('open'));
+ 
+        // ─── ACORDEÓN TRATAMIENTOS ────────────────────────────────────────────────
+        const cards = document.querySelectorAll('.treatment-card');
+        cards.forEach(card => {
+            const toggleBtn = card.querySelector('.btn-toggle-desc');
+            const desc = card.querySelector('.treatment-desc');
+            if (!toggleBtn) return;
+            toggleBtn.addEventListener('click', () => {
+                const isExpanded = card.classList.contains('expanded');
+                cards.forEach(c => {
+                    c.classList.remove('expanded');
+                    const d = c.querySelector('.treatment-desc');
+                    if (d) d.style.maxHeight = null;
+                });
+                if (!isExpanded) {
+                    card.classList.add('expanded');
+                    desc.style.maxHeight = desc.scrollHeight + "px";
+                }
+            });
+        });
+ 
+        // ─── SLIDER TRATAMIENTOS ──────────────────────────────────────────────────
+        const slider = document.getElementById('treatmentsSlider');
+        document.getElementById('slideLeft').addEventListener('click', () => slider.scrollBy({ left: -320, behavior: 'smooth' }));
+        document.getElementById('slideRight').addEventListener('click', () => slider.scrollBy({ left: 320, behavior: 'smooth' }));
+ 
+        // ─── VALIDACIÓN DE INPUTS ─────────────────────────────────────────────────
+        // Solo letras (y espacios/tildes) para nombre y apellido
+        function soloLetras(e) {
+            // Permitir teclas de control: backspace, delete, arrows, tab
+            if (e.key && e.key.length === 1 && !/^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]$/.test(e.key)) {
+                e.preventDefault();
+            }
+        }
+ 
+        // Solo números y el signo + para teléfono
+        function soloNumeros(e) {
+            if (e.key && e.key.length === 1 && !/^[\d+\s\-]$/.test(e.key)) {
+                e.preventDefault();
+            }
+        }
+ 
+        // También limpiar si alguien pega contenido incorrecto
+        function limpiarLetras(input, errorEl) {
+            const val = input.value;
+            const cleaned = val.replace(/[^a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]/g, '');
+            if (val !== cleaned) {
+                input.value = cleaned;
+                input.classList.add('input-error');
+                errorEl.classList.add('visible');
+                setTimeout(() => {
+                    input.classList.remove('input-error');
+                    errorEl.classList.remove('visible');
+                }, 2000);
+            }
+        }
+ 
+        function limpiarNumeros(input, errorEl) {
+            const val = input.value;
+            const cleaned = val.replace(/[^\d+\s\-]/g, '');
+            if (val !== cleaned) {
+                input.value = cleaned;
+                input.classList.add('input-error');
+                errorEl.classList.add('visible');
+                setTimeout(() => {
+                    input.classList.remove('input-error');
+                    errorEl.classList.remove('visible');
+                }, 2000);
+            }
+        }
+ 
+        const inputNombre   = document.getElementById('inputNombre');
+        const inputApellido = document.getElementById('inputApellido');
+        const inputTelefono = document.getElementById('inputTelefono');
+        const errorNombre   = document.getElementById('errorNombre');
+        const errorApellido = document.getElementById('errorApellido');
+        const errorTelefono = document.getElementById('errorTelefono');
+ 
+        inputNombre.addEventListener('keydown', soloLetras);
+        inputApellido.addEventListener('keydown', soloLetras);
+        inputTelefono.addEventListener('keydown', soloNumeros);
+ 
+        inputNombre.addEventListener('input', () => { limpiarLetras(inputNombre, errorNombre); validateForm(); });
+        inputApellido.addEventListener('input', () => { limpiarLetras(inputApellido, errorApellido); validateForm(); });
+        inputTelefono.addEventListener('input', () => { limpiarNumeros(inputTelefono, errorTelefono); validateForm(); });
+ 
+        // ─── LÓGICA DE CALENDARIO ─────────────────────────────────────────────────
+        let currentMonth = 4, currentYear = 2026, selectedDay = null, dentistSelected = false, selectedTime = null;
+        const monthsNames = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+        const selectDentista    = document.getElementById('selectDentista');
+        const calendarGrid      = document.getElementById('calendarGrid');
+        const monthYearDisplay  = document.getElementById('monthYearDisplay');
+        const calendarHint      = document.getElementById('calendarHint');
+        const btnConfirmar      = document.getElementById('btnConfirmar');
+        const timeSlotsGrid     = document.getElementById('timeSlotsGrid');
+        const timeSlotsHint     = document.getElementById('timeSlotsHint');
+ 
+        selectDentista.addEventListener('change', () => {
+            dentistSelected = true;
+            calendarHint.innerText = "✓ Dentista seleccionado. Elige el día en el calendario:";
+            renderCalendar(currentMonth, currentYear);
+            validateForm();
+        });
+ 
+        function validateForm() {
+            const nameOk    = inputNombre.value.trim() !== "";
+            const phoneOk   = inputTelefono.value.trim() !== "";
+            if (dentistSelected && selectedDay && selectedTime && nameOk && phoneOk) {
+                btnConfirmar.disabled = false;
+                btnConfirmar.classList.add('active');
+            } else {
+                btnConfirmar.disabled = true;
+                btnConfirmar.classList.remove('active');
+            }
+        }
+ 
+        // ─── GENERADOR DE HORARIOS (8:00 AM – 10:00 PM) ──────────────────────────
+        // Genera slots cada 30 minutos de 08:00 a 22:00
+        function generateTimeSlots() {
+            const slots = [];
+            for (let h = 8; h < 22; h++) {
+                const period = h < 12 ? 'AM' : 'PM';
+                const display12 = h <= 12 ? h : h - 12;
+                slots.push({ label: `${display12}:00 ${period}`, value: `${String(h).padStart(2,'0')}:00` });
+                slots.push({ label: `${display12}:30 ${period}`, value: `${String(h).padStart(2,'0')}:30` });
+            }
+            // 10:00 PM exacta
+            slots.push({ label: `10:00 PM`, value: `22:00` });
+            return slots;
+        }
+ 
+        async function renderTimeSlots(daySelected, dateISO) {
+            timeSlotsGrid.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:var(--muted-foreground);font-size:13px;">Cargando horarios...</div>';
+            const slots = generateTimeSlots();
+ 
+            // Consulta al doctor qué horas están bloqueadas (doGet)
+            let bloqueados = [];
+            if (daySelected && dateISO) {
+                try {
+                    const res = await fetch(`${GOOGLE_SCRIPT_URL}?date=${dateISO}`);
+                    bloqueados = await res.json();
+                } catch(e) {
+                    bloqueados = [];
+                }
+            }
+ 
+            timeSlotsGrid.innerHTML = '';
+ 
+            slots.forEach(slot => {
+                const el = document.createElement('div');
+                el.classList.add('time-slot');
+                el.textContent = slot.label;
+ 
+                if (!daySelected) {
+                    el.title = 'Primero elige un día';
+                } else if (bloqueados.includes(slot.value)) {
+                    // Hora bloqueada por el doctor
+                    el.classList.add('disabled');
+                    el.title = 'No disponible';
+                    el.style.background = '#fee2e2';
+                    el.style.color = '#ef4444';
+                    el.style.textDecoration = 'line-through';
+                } else {
+                    el.classList.add('available');
+                    el.dataset.value = slot.value;
+                    el.addEventListener('click', () => {
+                        document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+                        el.classList.add('selected');
+                        selectedTime = slot.value;
+                        timeSlotsHint.innerHTML = `<i class="fa-solid fa-check" style="color:var(--accent)"></i> <span>Hora seleccionada: <strong>${slot.label}</strong></span>`;
+                        validateForm();
+                    });
+                }
+ 
+                timeSlotsGrid.appendChild(el);
+            });
+ 
+            if (!daySelected) {
+                timeSlotsHint.innerHTML = `<i class="fa-solid fa-info-circle"></i> <span>Primero elige un día del calendario</span>`;
+            } else {
+                timeSlotsHint.innerHTML = `<i class="fa-solid fa-info-circle"></i> <span>Horario: 8:00 AM – 10:00 PM · Rojo = no disponible</span>`;
+            }
+        }
+ 
+        // Render inicial sin slots disponibles
+        renderTimeSlots(false, null);
+ 
+        // ─── RENDER CALENDARIO ────────────────────────────────────────────────────
+        function renderCalendar(month, year) {
+            calendarGrid.innerHTML = '';
+            monthYearDisplay.innerText = `${monthsNames[month]} ${year}`;
+            ['lu', 'ma', 'mi', 'ju', 'vi', 'sá', 'do'].forEach(d => {
+                const h = document.createElement('div'); h.classList.add('weekday'); h.innerText = d; calendarGrid.appendChild(h);
+            });
+ 
+            let firstDayIndex = new Date(year, month, 1).getDay() - 1;
+            if (firstDayIndex === -1) firstDayIndex = 6;
+            const totalDays = new Date(year, month + 1, 0).getDate();
+ 
+            for (let i = 0; i < firstDayIndex; i++) {
+                const empty = document.createElement('div'); empty.classList.add('day', 'empty'); calendarGrid.appendChild(empty);
+            }
+ 
+            for (let d = 1; d <= totalDays; d++) {
+                const dayCell = document.createElement('div'); dayCell.classList.add('day'); dayCell.innerText = d;
+                if (!dentistSelected) {
+                    dayCell.classList.add('disabled');
+                } else {
+                    if (year === 2026 && month === 4 && d === 31) dayCell.classList.add('today');
+                    dayCell.addEventListener('click', () => {
+                        document.querySelectorAll('.day').forEach(cell => cell.classList.remove('selected'));
+                        dayCell.classList.add('selected');
+                        selectedDay = d;
+                        selectedTime = null; // reset hora al cambiar día
+                        calendarHint.innerText = `Día elegido: ${d} de ${monthsNames[month]}.`;
+                        const dateISO = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+                        renderTimeSlots(true, dateISO);
+                        validateForm();
+                    });
+                }
+                calendarGrid.appendChild(dayCell);
+            }
+        }
+ 
+        document.getElementById('prevMonth').addEventListener('click', () => {
+            currentMonth--; if (currentMonth < 0) { currentMonth = 11; currentYear--; }
+            selectedDay = null; selectedTime = null;
+            renderCalendar(currentMonth, currentYear);
+            renderTimeSlots(false, null);
+            validateForm();
+        });
+        document.getElementById('nextMonth').addEventListener('click', () => {
+            currentMonth++; if (currentMonth > 11) { currentMonth = 0; currentYear++; }
+            selectedDay = null; selectedTime = null;
+            renderCalendar(currentMonth, currentYear);
+            renderTimeSlots(false, null);
+            validateForm();
+        });
+ 
+        renderCalendar(currentMonth, currentYear);
+ 
+        // ─── VENTANA MODAL DE ÉXITO + ENVÍO A GOOGLE CALENDAR ────────────────────
+        const successModal = document.getElementById('successModal');
+ 
+        btnConfirmar.addEventListener('click', () => {
+            if (btnConfirmar.disabled) return;
+ 
+            const name      = inputNombre.value.trim();
+            const apellido  = document.getElementById('inputApellido').value.trim();
+            const phone     = inputTelefono.value.trim();
+            const docOpt    = selectDentista.options[selectDentista.selectedIndex];
+            const docName   = docOpt.text;
+            const docValue  = docOpt.value;
+            const dayLabel  = `${selectedDay} de ${monthsNames[currentMonth]} de ${currentYear}`;
+ 
+            // Formato hora para mostrar (AM/PM)
+            const [hh, mm]  = selectedTime.split(':');
+            const h24       = parseInt(hh);
+            const period    = h24 < 12 ? 'AM' : 'PM';
+            const h12       = h24 === 0 ? 12 : h24 > 12 ? h24 - 12 : h24;
+            const timeLabel = `${h12}:${mm} ${period}`;
+ 
+            // Mostrar modal de confirmación
+            document.getElementById('modalMessage').innerHTML =
+                `Hola <strong>${name} ${apellido}</strong>, tu cita con <strong>${docName}</strong> fue registrada el <strong>${dayLabel}</strong> a las <strong>${timeLabel}</strong>.`;
+            successModal.classList.add('open');
+ 
+            // ── Envío a Google Apps Script ────────────────────────────────────────
+            // Código.gs espera: nombre, fecha (ISO), telefono
+            const dateISO  = `${currentYear}-${String(currentMonth + 1).padStart(2,'0')}-${String(selectedDay).padStart(2,'0')}`;
+            const startISO = `${dateISO}T${selectedTime}:00`;
+ 
+            const payload = {
+                nombre:   `${name} ${apellido}`,  // coincide con datos.nombre en Código.gs
+                fecha:    startISO,                // coincide con datos.fecha en Código.gs
+                telefono: phone
+            };
+ 
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            }).catch(err => console.warn('Error al sincronizar con Google Calendar:', err));
+        });
+ 
+        document.getElementById('btnCerrarModal').addEventListener('click', () => {
+            successModal.classList.remove('open');
+            inputNombre.value = '';
+            inputApellido.value = '';
+            inputTelefono.value = '';
+            selectDentista.selectedIndex = 0;
+            dentistSelected = false; selectedDay = null; selectedTime = null;
+            calendarHint.innerText = "← Primero selecciona un dentista";
+            renderCalendar(currentMonth, currentYear);
+            renderTimeSlots(false, null);
+            validateForm();
+        });
+    </script>
+</body>
+</html>
