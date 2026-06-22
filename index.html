@@ -704,7 +704,7 @@
     // ─── GENERADOR DE SLOTS 8AM–10PM cada 1 hora ─────────────────────────────
     function generateTimeSlots() {
         const slots = [];
-        for (let h = 8; h < 22; h++) {
+        for (let h = 8; h < 21; h++) {
             const pIni = h < 12 ? 'AM' : 'PM';
             const dIni = h <= 12 ? h : h - 12;
             const hFin = h + 1;
