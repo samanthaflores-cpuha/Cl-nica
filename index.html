@@ -616,7 +616,7 @@
     //  ⚠️  CAMBIA ESTA URL por la que Google Apps Script te entregue al
     //     desplegar el proyecto Codigo.gs como "Aplicación web".
     // ══════════════════════════════════════════════════════════════════════════
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyitzO8n86tXoG5396LckhVuDTLNGa7OQw9uwm4Tuky5lfVYYDcHrcbk5QWtGvnCLzkCQ/exec';
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx2whj2tmWTG03u3IzTD9fyAop1wXfAkwY9jS0vFHUnRdgsPAxLXdxqwsbs39yMqRfUyw/exec';
  
     // ─── MENÚ HAMBURGUESA ─────────────────────────────────────────────────────
     document.getElementById('menuToggle').addEventListener('click', () =>
@@ -780,27 +780,50 @@
     renderTimeSlots(false, null);
  
     // ─── RENDER CALENDARIO ────────────────────────────────────────────────────
-    function renderCalendar(month, year) {
+       function renderCalendar(month, year) {
         calendarGrid.innerHTML = '';
         monthYearDisplay.innerText = `${monthsNames[month]} ${year}`;
         ['lu','ma','mi','ju','vi','sá','do'].forEach(d => {
             const h = document.createElement('div'); h.classList.add('weekday'); h.innerText = d; calendarGrid.appendChild(h);
         });
+
         let first = new Date(year, month, 1).getDay() - 1;
         if (first === -1) first = 6;
         const total = new Date(year, month+1, 0).getDate();
-        const today = new Date();
- 
+        
+        // CÁLCULO DEL RANGO DE LA SEMANA ACTUAL (Lunes a Domingo)
+        const hoy = new Date();
+        hoy.setHours(0, 0, 0, 0);
+        
+        const dayOfWeek = hoy.getDay(); 
+        const diffToMonday = (dayOfWeek === 0 ? -6 : 1 - dayOfWeek);
+        
+        const inicioSemana = new Date(hoy);
+        inicioSemana.setDate(hoy.getDate() + diffToMonday);
+        
+        const finSemana = new Date(inicioSemana);
+        finSemana.setDate(inicioSemana.getDate() + 6);
+
         for (let i = 0; i < first; i++) {
             const e = document.createElement('div'); e.classList.add('day','empty'); calendarGrid.appendChild(e);
         }
+
         for (let d = 1; d <= total; d++) {
             const cell = document.createElement('div'); cell.classList.add('day'); cell.innerText = d;
-            const isToday = year === today.getFullYear() && month === today.getMonth() && d === today.getDate();
+            const celdaFecha = new Date(year, month, d);
+            celdaFecha.setHours(0, 0, 0, 0);
+
+            const isToday = celdaFecha.getTime() === hoy.getTime();
             if (isToday) cell.classList.add('today');
- 
-            if (!dentistSelected) {
+
+            // Solo habilita si está dentro de la semana actual
+            const fueraDeSemana = celdaFecha < inicioSemana || celdaFecha > finSemana;
+
+            if (!dentistSelected || fueraDeSemana) {
                 cell.classList.add('disabled');
+                if (fueraDeSemana) {
+                    cell.title = "Solo se permite reservar para la semana en curso";
+                }
             } else {
                 cell.addEventListener('click', () => {
                     document.querySelectorAll('.day').forEach(c => c.classList.remove('selected'));
@@ -817,6 +840,7 @@
             calendarGrid.appendChild(cell);
         }
     }
+
  
     document.getElementById('prevMonth').addEventListener('click', () => {
         currentMonth--; if (currentMonth < 0) { currentMonth = 11; currentYear--; }
@@ -885,7 +909,8 @@
                 body: JSON.stringify({
                     nombre: `${name} ${apellido}`,
                     fecha: startISO,
-                    telefono: phone
+                    telefono: phone,
+                    dentista: docName 
                 })
             });
  
